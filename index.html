@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Создание сайтов — Веб-студия</title>
-
+    <title>Создание сайтов - Веб-студия</title>
     <style>
         * {
             margin: 0;
@@ -13,7 +12,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
             color: #333;
         }
@@ -24,192 +23,262 @@
             padding: 0 20px;
         }
 
-        /* HERO */
+        /* Hero Section */
         .hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            padding: 120px 20px;
+            text-align: center;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            padding: 100px 20px;
         }
 
-        .hero h1 {
+        .hero-content h1 {
             font-size: 3.5rem;
             margin-bottom: 20px;
+            font-weight: 700;
         }
 
-        .hero p {
+        .hero-content p {
             font-size: 1.5rem;
             margin-bottom: 40px;
+            opacity: 0.95;
         }
 
         .btn {
+            display: inline-block;
+            padding: 18px 45px;
             background: white;
             color: #667eea;
-            padding: 18px 45px;
-            border-radius: 50px;
             text-decoration: none;
+            border-radius: 50px;
             font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
             border: none;
             cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        /* SECTIONS */
-        section {
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 20px;
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #667eea;
+        }
+
+        .about p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #555;
+        }
+
+        /* How It Works */
+        .how-it-works {
             padding: 100px 20px;
             text-align: center;
         }
 
-        h2 {
+        .how-it-works h2 {
             font-size: 2.5rem;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             color: #667eea;
         }
 
+        .how-it-works p {
+            font-size: 1.2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Cards Section */
         .cards {
+            padding: 100px 20px;
             background: #f8f9fa;
+        }
+
+        .cards h2 {
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #667eea;
+            text-align: center;
         }
 
         .cards-grid {
             display: flex;
-            gap: 30px;
             flex-wrap: wrap;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
             justify-content: center;
         }
 
         .card {
+            flex: 0 1 calc(50% - 20px);
+            max-width: 500px;
+            min-width: 280px;
             background: white;
-            padding: 40px 30px;
+            padding: 50px 30px;
             border-radius: 15px;
-            width: 300px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* FORM */
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 1.05rem;
+        }
+
+        /* Form Section */
         .form-section {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .form-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
             color: white;
+            text-align: center;
         }
 
         .form-container {
-            max-width: 500px;
+            max-width: 600px;
             margin: 0 auto;
             background: white;
-            color: #333;
-            padding: 40px;
+            padding: 50px;
             border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
         }
 
         .form-group {
-            margin-bottom: 20px;
-            text-align: left;
+            margin-bottom: 25px;
         }
 
-        label {
+        .form-group label {
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
+            color: #333;
         }
 
-        input, textarea {
+        .form-group input,
+        .form-group textarea {
             width: 100%;
-            padding: 12px;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
             border-radius: 8px;
-            border: 2px solid #ddd;
             font-size: 1rem;
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 100px;
         }
 
         .btn-submit {
             width: 100%;
-            padding: 15px;
+            padding: 18px;
             background: #667eea;
             color: white;
             border: none;
             border-radius: 8px;
             font-size: 1.1rem;
+            font-weight: 600;
             cursor: pointer;
         }
 
         .success-message {
             display: none;
             text-align: center;
+            padding: 50px;
         }
 
         .success-message.show {
             display: block;
         }
-
-        /* CONTACTS */
-        .contacts {
-            background: #f8f9fa;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            .hero p {
-                font-size: 1.2rem;
-            }
-        }
     </style>
 </head>
-
 <body>
 
-    <!-- HERO -->
     <section class="hero">
-        <div>
+        <div class="hero-content">
             <h1>Создаем сайты</h1>
             <p>Сделаем сайт вашей компании</p>
             <a href="#form" class="btn">Оставить заявку</a>
         </div>
     </section>
 
-    <!-- ABOUT -->
-    <section>
+    <section class="about">
         <div class="container">
             <h2>О нас</h2>
-            <p>Быстро, качественно и современно делаем сайты под ключ.</p>
+            <p>Быстро, дешево, красиво — это про нас</p>
         </div>
     </section>
 
-    <!-- HOW -->
-    <section>
+    <section class="how-it-works">
         <div class="container">
-            <h2>Как мы работаем</h2>
+            <h2>Как это работает</h2>
             <p>Вы оставляете заявку — мы делаем сайт и сдаём результат.</p>
         </div>
     </section>
 
-    <!-- CARDS -->
     <section class="cards">
         <div class="container">
-            <h2>Преимущества</h2>
+            <h2>Наши преимущества</h2>
             <div class="cards-grid">
-                <div class="card">🎨<br><strong>Дизайн</strong><br>Современный внешний вид</div>
-                <div class="card">⚡<br><strong>Скорость</strong><br>Быстрая разработка</div>
-                <div class="card">💡<br><strong>Идеи</strong><br>Креативные решения</div>
+                <div class="card">
+                    <div class="card-icon">🎨</div>
+                    <h3>Дизайн</h3>
+                    <p>Современный дизайн</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3>Скорость</h3>
+                    <p>Быстрая разработка</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- FORM -->
     <section class="form-section" id="form">
         <div class="container">
             <h2>Форма заявки</h2>
-
             <div class="form-container">
+
                 <form id="contactForm">
+                    <input type="hidden" name="_subject" value="Новая заявка с сайта">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
+
                     <div class="form-group">
                         <label>Имя</label>
                         <input type="text" name="name" required>
@@ -230,51 +299,45 @@
                         <textarea name="message" required></textarea>
                     </div>
 
-                    <button class="btn-submit">Отправить заявку</button>
+                    <button type="submit" class="btn-submit">Отправить заявку</button>
                 </form>
 
                 <div class="success-message" id="successMessage">
-                    <h3>✅ Заявка отправлена</h3>
+                    <h3>Заявка отправлена!</h3>
                     <p>Мы свяжемся с вами в ближайшее время</p>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- CONTACTS -->
-    <section class="contacts">
-        <div class="container">
-            <h2>Контакты</h2>
-            <p>📞 +372 5558 7955</p>
-            <p>📧 romanturovski3@gmail.com</p>
-        </div>
-    </section>
-
-    <!-- SCRIPT -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', function () {
             const form = document.getElementById('contactForm');
-            const success = document.getElementById('successMessage');
+            const successMessage = document.getElementById('successMessage');
 
-            form.addEventListener('submit', e => {
+            form.addEventListener('submit', function (e) {
                 e.preventDefault();
 
                 const formData = new FormData(form);
-                formData.append('_subject', 'Новая заявка с сайта');
-                formData.append('_template', 'table');
-                formData.append('_captcha', 'false');
 
-                fetch('https://formsubmit.co/ajax/romanturovski3@gmail.com', {
+                fetch('https://formsubmit.co/romanturovski3@gmail.com', {
                     method: 'POST',
-                    body: formData
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
                 })
-                .then(res => res.json())
+                .then(response => {
+                    if (!response.ok) throw new Error();
+                    return response.json();
+                })
                 .then(() => {
                     form.style.display = 'none';
-                    success.classList.add('show');
+                    successMessage.classList.add('show');
                 })
                 .catch(() => {
-                    alert('Ошибка отправки');
+                    alert('Ошибка отправки формы');
                 });
             });
         });
