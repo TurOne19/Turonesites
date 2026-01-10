@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Создание сайтов - Веб-студия</title>
     <style>
-        /* === ТВОЙ CSS БЕЗ ИЗМЕНЕНИЙ === */
         * {
             margin: 0;
             padding: 0;
@@ -24,6 +23,7 @@
             padding: 0 20px;
         }
 
+        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -35,14 +35,384 @@
             justify-content: center;
         }
 
-        /* --- дальше ВЕСЬ твой CSS без изменений --- */
-        /* Я НЕ трогаю ни одной строки стилей */
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 18px 45px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 20px;
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #667eea;
+        }
+
+        .about p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #555;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .how-it-works h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #667eea;
+        }
+
+        .how-it-works p {
+            font-size: 1.2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Cards Section */
+        .cards {
+            padding: 100px 20px;
+            background: #f8f9fa;
+        }
+
+        .cards h2 {
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #667eea;
+            text-align: center;
+        }
+
+        .cards-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            justify-content: center;
+        }
+
+        .card {
+            flex: 0 1 calc(50% - 20px);
+            max-width: 500px;
+            min-width: 280px;
+        }
+
+        .cards-grid .card:last-child {
+            flex: 0 1 calc(50% - 20px);
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (max-width: 900px) {
+            .card {
+                flex: 0 1 calc(50% - 20px);
+                min-width: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cards-grid {
+                gap: 30px;
+            }
+            
+            .card {
+                flex: 0 1 100%;
+                max-width: 100%;
+            }
+            
+            .cards-grid .card:last-child {
+                margin-left: 0;
+                flex: 0 1 100%;
+            }
+        }
+
+        .card {
+            background: white;
+            padding: 50px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 1.05rem;
+        }
+
+        /* Form Section */
+        .form-section {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .form-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: white;
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 18px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background: #5568d3;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .checkmark-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #4CAF50;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: scaleIn 0.3s ease-out;
+        }
+
+        .checkmark {
+            width: 40px;
+            height: 40px;
+            border: 4px solid white;
+            border-top: none;
+            border-left: none;
+            transform: rotate(45deg);
+            animation: checkmark 0.4s ease-out 0.3s both;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes checkmark {
+            from {
+                height: 0;
+                width: 0;
+            }
+            to {
+                height: 40px;
+                width: 40px;
+            }
+        }
+
+        .success-text {
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .success-subtext {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        /* Contacts */
+        .contacts {
+            padding: 100px 20px;
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .contacts h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #667eea;
+        }
+
+        .contact-info {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-item {
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+        }
+
+        .contact-item strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .contact-item a {
+            color: #555;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: #667eea;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .about h2,
+            .how-it-works h2,
+            .cards h2,
+            .form-section h2,
+            .contacts h2 {
+                font-size: 2rem;
+            }
+
+            .form-container {
+                padding: 30px 25px;
+            }
+
+            .hero {
+                padding: 80px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 15px 35px;
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
-
 <body>
-
-    <!-- Hero -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1>Создаем сайты</h1>
@@ -51,7 +421,7 @@
         </div>
     </section>
 
-    <!-- About -->
+    <!-- About Section -->
     <section class="about">
         <div class="container">
             <h2>О нас</h2>
@@ -59,15 +429,15 @@
         </div>
     </section>
 
-    <!-- How it works -->
+    <!-- How It Works -->
     <section class="how-it-works">
         <div class="container">
             <h2>Как это работает</h2>
-            <p>Принимаем заказ, делаем сайт и сдаём результат</p>
+            <p>Принимаем от вас заказ на сайт по вашему вкусу, делаем быстро, красиво и презентабельно</p>
         </div>
     </section>
 
-    <!-- Cards -->
+    <!-- Cards Section -->
     <section class="cards">
         <div class="container">
             <h2>Наши преимущества</h2>
@@ -75,82 +445,133 @@
                 <div class="card">
                     <div class="card-icon">🎨</div>
                     <h3>Дизайн</h3>
-                    <p>Современный и аккуратный</p>
+                    <p>Современный и уникальный дизайн для вашего бизнеса</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💡</div>
+                    <h3>Находчивость</h3>
+                    <p>Креативные решения для любых задач</p>
                 </div>
                 <div class="card">
                     <div class="card-icon">⚡</div>
                     <h3>Скорость</h3>
-                    <p>Быстрая разработка</p>
+                    <p>Быстрая разработка и сдача проектов</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FORM -->
+    <!-- Form Section -->
     <section class="form-section" id="form">
         <div class="container">
             <h2>Форма заявки</h2>
             <div class="form-container">
-
-                <!-- 🔴 ИЗМЕНЕНО ТОЛЬКО ЗДЕСЬ -->
                 <form
-                    id="contactForm"
-                    action="https://formsubmit.co/romanturovski3@gmail.com"
-                    method="POST"
-                >
-                    <input type="hidden" name="_subject" value="Новая заявка с сайта">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_captcha" value="false">
-
+    id="contactForm"
+    action="https://formsubmit.co/romanturovski3@gmail.com"
+    method="POST">
+<input type="hidden" name="_subject" value="Новая заявка с сайта">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_captcha" value="false">
                     <div class="form-group">
-                        <label>Имя</label>
-                        <input type="text" name="name" required>
+                        <label for="name">Ваше имя</label>
+                        <input type="text" id="name" name="name" required>
                     </div>
-
                     <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" name="email" required>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
                     </div>
-
                     <div class="form-group">
-                        <label>Телефон</label>
-                        <input type="tel" name="phone" required>
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" name="phone" required>
                     </div>
-
                     <div class="form-group">
-                        <label>Комментарий</label>
-                        <textarea name="message" required></textarea>
+                        <label for="message">Комментарий</label>
+                        <textarea id="message" name="message" required></textarea>
                     </div>
-
-                    <button type="submit" class="btn-submit">
-                        Отправить заявку
-                    </button>
+                    <button type="submit" class="btn-submit">Отправить заявку</button>
                 </form>
-
+                
                 <div class="success-message" id="successMessage">
-                    <h3>Заявка отправлена!</h3>
-                    <p>Мы свяжемся с вами в ближайшее время</p>
+                    <div class="checkmark-circle">
+                        <div class="checkmark"></div>
+                    </div>
+                    <div class="success-text">Заявка отправлена!</div>
+                    <div class="success-subtext">Мы свяжемся с вами в ближайшее время</div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- 🔴 ИЗМЕНЁН ТОЛЬКО JS -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const form = document.getElementById('contactForm');
-            const successMessage = document.getElementById('successMessage');
+    <!-- Contacts -->
+    <section class="contacts">
+        <div class="container">
+            <h2>Контакты</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <strong>Телефон:</strong>
+                    <a href="tel:+37255587955">+372 5558 7955</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Почта:</strong>
+                    <a href="mailto:romanturovski3@gmail.com">romanturovski3@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            form.addEventListener('submit', function () {
-                // показываем анимацию, а отправку делает браузер
-                setTimeout(() => {
-                    form.style.display = 'none';
-                    successMessage.classList.add('show');
-                }, 300);
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
-    </script>
 
+        // Form submission handler with animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            const successMessage = document.getElementById('successMessage');
+            
+            if (form && successMessage) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Hide form and show success message
+                    form.style.display = 'none';
+                    successMessage.classList.add('show');
+                    
+                    // Send email using FormSubmit AJAX endpoint
+                    // Form submission handler (БЕЗ fetch)
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
+
+    form.addEventListener('submit', function () {
+        // отправку делает браузер, JS — только анимация
+        setTimeout(() => {
+            form.style.display = 'none';
+            successMessage.classList.add('show');
+        }, 300);
+    });
+});
+
+                    // Reset after 5 seconds
+                    setTimeout(() => {
+                        form.style.display = 'block';
+                        successMessage.classList.remove('show');
+                        form.reset();
+                    }, 5000);
+                });
+            }
+        });
+    </script>
 </body>
 </html>
