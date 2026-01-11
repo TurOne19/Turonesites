@@ -466,13 +466,7 @@
         <div class="container">
             <h2>Форма заявки</h2>
             <div class="form-container">
-                <form
-    id="contactForm"
-    action="https://formsubmit.co/romanturovski3@gmail.com"
-    method="POST">
-<input type="hidden" name="_subject" value="Новая заявка с сайта">
-<input type="hidden" name="_template" value="table">
-<input type="hidden" name="_captcha" value="false">
+                <form id="contactForm">
                     <div class="form-group">
                         <label for="name">Ваше имя</label>
                         <input type="text" id="name" name="name" required>
@@ -520,46 +514,67 @@
         </div>
     </section>
 
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('contactForm');
-    const successMessage = document.getElementById('successMessage');
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-    form.addEventListener('submit', async function (e) {
-        e.preventDefault();
-
-        const data = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
-            message: document.getElementById('message').value
-        };
-const TOKEN = '8275112739:AAFKoB78mXAvPxSo5lv9uuM382JDcoWUH_0';
-const CHAT_ID = '8146157246';
-
-const text =
-`📩 Новая заявка с сайта
-👤 Имя: ${data.name}
-📧 Email: ${data.email}
-📞 Телефон: ${data.phone}
-💬 Сообщение: ${data.message}`;
-
-const url =
-  `https://api.telegram.org/bot${TOKEN}/sendMessage` +
-  `?chat_id=${CHAT_ID}` +
-  `&text=${encodeURIComponent(text)}`;
-
-fetch(url)
-  .then(() => {
-    form.style.display = 'none';
-    successMessage.classList.add('show');
-  })
-  .catch(() => {
-    alert('Ошибка отправки');
-  });
-    });
-});
-    
-</script>
+        // Form submission handler with animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            const successMessage = document.getElementById('successMessage');
+            
+            if (form && successMessage) {
+                form.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    const data = {
+                        name: document.getElementById('name').value,
+                        email: document.getElementById('email').value,
+                        phone: document.getElementById('phone').value,
+                        message: document.getElementById('message').value
+                    };
+                    
+                    try {
+                        // Отправка на твой API endpoint на Vercel
+                        const response = await fetch('/api/telegram', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(data)
+                        });
+                        
+                        if (response.ok) {
+                            // Показываем анимацию успеха
+                            form.style.display = 'none';
+                            successMessage.classList.add('show');
+                            
+                            // Сброс через 5 секунд
+                            setTimeout(() => {
+                                form.style.display = 'block';
+                                successMessage.classList.remove('show');
+                                form.reset();
+                            }, 5000);
+                        } else {
+                            alert('Ошибка отправки. Попробуйте еще раз.');
+                        }
+                    } catch (error) {
+                        alert('Ошибка отправки. Попробуйте еще раз.');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
