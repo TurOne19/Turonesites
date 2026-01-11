@@ -534,21 +534,30 @@ document.addEventListener('DOMContentLoaded', function () {
             phone: document.getElementById('phone').value,
             message: document.getElementById('message').value
         };
+const TOKEN = '8275112739:AAFKoB78mXAvPxSo5Iv9uuM382JDcoWUH_0';
+const CHAT_ID = '123456789';
 
-        try {
-            const res = await fetch('/api/sendTelegram', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            });
 
-            if (!res.ok) throw new Error();
+const text =
+`📩 Новая заявка с сайта
+👤 Имя: ${data.name}
+📧 Email: ${data.email}
+📞 Телефон: ${data.phone}
+💬 Сообщение: ${data.message}`;
 
-            form.style.display = 'none';
-            successMessage.classList.add('show');
-        } catch {
-            alert('Ошибка отправки');
-        }
+const url =
+  `https://api.telegram.org/bot${TOKEN}/sendMessage` +
+  `?chat_id=${CHAT_ID}` +
+  `&text=${encodeURIComponent(text)}`;
+
+fetch(url)
+  .then(() => {
+    form.style.display = 'none';
+    successMessage.classList.add('show');
+  })
+  .catch(() => {
+    alert('Ошибка отправки');
+  });
     });
 });
 </script>
