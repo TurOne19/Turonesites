@@ -544,31 +544,30 @@
                         phone: document.getElementById('phone').value,
                         message: document.getElementById('message').value
                     };
+  const TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+  const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
+                    
+                    const text = `📩 Новая заявка с сайта
+👤 Имя: ${data.name}
+📧 Email: ${data.email}
+📞 Телефон: ${data.phone}
+💬 Сообщение: ${data.message}`;
+                    
+                    const url = `https://api.telegram.org/bot${TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${encodeURIComponent(text)}`;
                     
                     try {
-                        // Отправка на твой API endpoint на Vercel
-                        const response = await fetch('/api/telegram', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify(data)
-                        });
+                        await fetch(url);
                         
-                        if (response.ok) {
-                            // Показываем анимацию успеха
-                            form.style.display = 'none';
-                            successMessage.classList.add('show');
-                            
-                            // Сброс через 5 секунд
-                            setTimeout(() => {
-                                form.style.display = 'block';
-                                successMessage.classList.remove('show');
-                                form.reset();
-                            }, 5000);
-                        } else {
-                            alert('Ошибка отправки. Попробуйте еще раз.');
-                        }
+                        // Показываем анимацию успеха
+                        form.style.display = 'none';
+                        successMessage.classList.add('show');
+                        
+                        // Сброс через 5 секунд
+                        setTimeout(() => {
+                            form.style.display = 'block';
+                            successMessage.classList.remove('show');
+                            form.reset();
+                        }, 5000);
                     } catch (error) {
                         alert('Ошибка отправки. Попробуйте еще раз.');
                     }
