@@ -131,37 +131,23 @@
 
         .card {
             flex: 0 1 calc(50% - 20px);
-            max-width: 500px;
-            min-width: 280px;
+            max-width: 400px;
         }
 
         .cards-grid .card:last-child {
             flex: 0 1 calc(50% - 20px);
-            max-width: 500px;
+            max-width: 400px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        @media (max-width: 900px) {
-            .card {
-                flex: 0 1 calc(50% - 20px);
-                min-width: 250px;
-            }
-        }
-
         @media (max-width: 768px) {
-            .cards-grid {
-                gap: 30px;
-            }
-            
             .card {
                 flex: 0 1 100%;
                 max-width: 100%;
             }
-            
             .cards-grid .card:last-child {
                 margin-left: 0;
-                flex: 0 1 100%;
             }
         }
 
@@ -484,6 +470,7 @@
                         <textarea id="message" name="message" required></textarea>
                     </div>
                     <button type="submit" class="btn-submit">Отправить заявку</button>
+                    <button type="button" onclick="testAnimation()" style="margin-top: 10px; background: #999; width: 100%; padding: 10px; border: none; border-radius: 8px; color: white; cursor: pointer;">Тест анимации</button>
                 </form>
                 
                 <div class="success-message" id="successMessage">
@@ -529,49 +516,52 @@
             });
         });
 
+        // Test animation function
+        function testAnimation() {
+            const form = document.getElementById('contactForm');
+            const successMessage = document.getElementById('successMessage');
+            
+            form.style.display = 'none';
+            successMessage.classList.add('show');
+            
+            setTimeout(() => {
+                form.style.display = 'block';
+                successMessage.classList.remove('show');
+            }, 5000);
+        }
+        
         // Form submission handler with animation
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('contactForm');
             const successMessage = document.getElementById('successMessage');
             
             if (form && successMessage) {
-                form.addEventListener('submit', async function(e) {
+                form.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
-                    const data = {
-                        name: document.getElementById('name').value,
-                        email: document.getElementById('email').value,
-                        phone: document.getElementById('phone').value,
-                        message: document.getElementById('message').value
-                    };
+                    // Hide form and show success message
+                    form.style.display = 'none';
+                    successMessage.classList.add('show');
                     
-                    try {
-                        // Отправка на твой API endpoint на Vercel
-                        const response = await fetch('/api/telegram', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify(data)
-                        });
-                        
-                        if (response.ok) {
-                            // Показываем анимацию успеха
-                            form.style.display = 'none';
-                            successMessage.classList.add('show');
-                            
-                            // Сброс через 5 секунд
-                            setTimeout(() => {
-                                form.style.display = 'block';
-                                successMessage.classList.remove('show');
-                                form.reset();
-                            }, 5000);
-                        } else {
-                            alert('Ошибка отправки. Попробуйте еще раз.');
-                        }
-                    } catch (error) {
-                        alert('Ошибка отправки. Попробуйте еще раз.');
-                    }
+                    // Send email using FormSubmit AJAX endpoint
+                    const formData = new FormData();
+                    formData.append('name', document.getElementById('name').value);
+                    formData.append('email', document.getElementById('email').value);
+                    formData.append('phone', document.getElementById('phone').value);
+                    formData.append('message', document.getElementById('message').value);
+                    formData.append('_subject', 'Новая заявка с сайта!');
+                    
+                    fetch('https://formsubmit.co/ajax/romanturovski3@gmail.com', {
+                        method: 'POST',
+                        body: formData
+                    }).catch(err => console.log('Sent'));
+                    
+                    // Reset after 5 seconds
+                    setTimeout(() => {
+                        form.style.display = 'block';
+                        successMessage.classList.remove('show');
+                        form.reset();
+                    }, 5000);
                 });
             }
         });
